@@ -5,6 +5,7 @@ import socket
 from typing import Any, Callable
 
 from lib.providers import OrangeProvider
+from lib.utils.cache import use_cache
 
 
 class IPTVManager:
@@ -30,6 +31,7 @@ class IPTVManager:
         return send
 
     @via_socket
+    @use_cache("streams.json")
     def send_channels(self) -> dict:
         """Return JSON-STREAMS formatted python datastructure to IPTV Manager."""
         return dict(version=1, streams=self.provider.get_streams())

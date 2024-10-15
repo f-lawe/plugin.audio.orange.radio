@@ -16,4 +16,15 @@
         </setting>
         <setting visible="System.HasAddon(service.iptv.manager)" label="30105" help="30106" type="action" action="Addon.OpenSettings(service.iptv.manager)" option="close" subsetting="true"/>
     </category>
+
+    <!-- Orange -->
+    <category label="30200">
+        <setting id="orange.session_data" visible="false">
+            <level>4</level>
+            <default>{}</default>
+        </setting>
+        <setting type="select" id="orange.country" label="30201" help="30202" values="all|at|be|ca|cn|de|es|fr|ie|jp|gb|nl|pl|pt|sg|us">
+            <default>all</default>
+        </setting>
+    </category>
 </settings>

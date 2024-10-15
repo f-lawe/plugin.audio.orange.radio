@@ -41,3 +41,27 @@ msgstr "Ouvrir les paramètres de IPTV Manager…"
 msgctxt "#30106"
 msgid "Help 30106"
 msgstr ""
+
+# Orange settings (from 30200 to 30200)
+
+msgctxt "#30200"
+msgid "Orange"
+msgstr "Orange"
+
+msgctxt "#30201"
+msgid "Country"
+msgstr "Pays"
+
+msgctxt "#30202"
+msgid "Help 30202"
+msgstr ""
+
+# Dialogs (from 30900 to 30999)
+
+msgctxt "#30900"
+msgid "This channel is not included of your current subscription."
+msgstr "Cette chaîne ne fait pas partie de votre abonnement."
+
+msgctxt "#30902"
+msgid "Cannot authenticate with your provider."
+msgstr "Authentification impossible avec votre fournisseur."

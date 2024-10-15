@@ -28,7 +28,7 @@ class StreamManager:
             return
         except AuthenticationRequired as e:
             log(e, xbmc.LOGERROR)
-            ok_dialog(localize(30902))
+            ok_dialog(localize(30901))
             xbmcplugin.setResolvedUrl(router.handle, False, create_play_item())
             return
 
