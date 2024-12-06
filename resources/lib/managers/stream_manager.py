@@ -1,4 +1,6 @@
-"""Video stream manager."""
+"""Radio stream manager."""
+
+from typing import Callable
 
 import xbmc
 import xbmcplugin
@@ -18,9 +20,17 @@ class StreamManager:
         self.provider = OrangeProvider()
 
     def load_live_stream(self, stream_id: str) -> None:
-        """Load live TV stream."""
+        """Load live stream."""
+        self._load_stream(self.provider.get_live_stream_info, stream_id)
+
+    def load_podcast_stream(self, stream_id: str) -> None:
+        """Load podcast stream."""
+        self._load_stream(self.provider.get_podcast_stream_info, stream_id)
+
+    def _load_stream(self, stream_getter: Callable[[str], dict], stream_id: str) -> None:
+        """Load stream."""
         try:
-            stream_info = self.provider.get_live_stream_info(stream_id)
+            stream_info = stream_getter(stream_id)
         except StreamDataDecodeError:
             log("Cannot decode stream data", xbmc.LOGERROR)
             ok_dialog(localize(30900))

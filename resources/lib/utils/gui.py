@@ -26,10 +26,18 @@ def create_list_item(item_data: dict, is_folder: bool = False) -> ListItem:
     if "info" in item_data:
         item_info_data: dict = item_data.get("info", {})
         video_info_tag = list_item.getVideoInfoTag()
-        video_info_tag.setDuration(item_info_data.get("duration"))
-        video_info_tag.setGenres(item_info_data.get("genres"))
-        video_info_tag.setPlot(item_info_data.get("plot"))
-        video_info_tag.setYear(item_info_data.get("year"))
+
+        if "duration" in item_info_data:
+            video_info_tag.setDuration(item_info_data.get("duration"))
+
+        if "genres" in item_info_data:
+            video_info_tag.setGenres(item_info_data.get("genres"))
+
+        if "plot" in item_info_data:
+            video_info_tag.setPlot(item_info_data.get("plot"))
+
+        if "year" in item_info_data:
+            video_info_tag.setYear(item_info_data.get("year"))
 
     return list_item
 
