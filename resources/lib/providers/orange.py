@@ -58,13 +58,13 @@ class OrangeProvider:
     def get_catchup_items(self, levels: List[str]) -> list:
         """Return a list of directory items for the specified levels."""
         depth = len(levels)
+        item_getters = [
+            self._get_podcast_radios,
+            self._get_podcasts,
+            self._get_podcast_shows,
+        ]
 
-        if depth == 0:
-            return self._get_podcast_radios()
-        elif depth == 1:
-            return self._get_podcasts(levels[0])
-        elif depth == 2:
-            return self._get_podcast_shows(levels[1])
+        return item_getters[depth](*levels)
 
     def _get_podcast_radios(self) -> list:
         """Load available podcast radios."""
@@ -86,7 +86,7 @@ class OrangeProvider:
                 "art": {"thumb": radio["thumb"]},
                 "path": build_addon_url(f"/podcasts/{radio_id}"),
             }
-            for radio_id, radio in radios.items()
+            for radio_id, radio in list(radios.items())
         ]
 
     def _get_podcasts(self, radio_id: str) -> list:
