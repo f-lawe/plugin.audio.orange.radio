@@ -92,6 +92,9 @@ class OrangeProvider:
     def _get_podcasts(self, radio_id: str) -> list:
         """Load available podcasts for the specified radio."""
         if radio_id == "other":
+            country = get_addon_setting("orange.country")
+            podcasts = self._request_chunks(_BROWSING_PODCAST_ENDPOINT.format(country=country))
+
             return []
 
         podcasts = self._request_chunks(_RADIO_PODCASTS_ENDPOINT.format(radio_id=radio_id))
